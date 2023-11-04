@@ -9,14 +9,16 @@ from sklearn.metrics import accuracy_score
 local_data = pd.read_csv(r'C:\Users\oo4dx\Downloads\parkinsons (1)\parkinsons.data')  # Adjust the file path accordingly
 
 # Extract features and labels
-features = local_data.loc[:, local_data.columns != 'status'].values[:, 1:] # values use for array format
+features = local_data.loc[:, local_data.columns != 'status'].values[:, 1:]  # values use for array format
 labels = local_data.loc[:, 'status'].values
 
 # check count input 0 1 
 print(local_data['status'].value_counts())
 
-#check labels = input
-print(labels)
+#check labels = status    
+print("\nLabel = >\n",labels)
+print("\nFeather = >\n",features[0])
+
 #  Initialize MinMax Scaler classs for -1 to 1
 scaler = MinMaxScaler((-1.00, 1.00))
 
@@ -26,11 +28,6 @@ y = labels
 
 # split the dataset into training and testing sets with 20% of testings
 x_train, x_test, y_train, y_test=train_test_split(X, y, test_size=0.20)
-
-# print("\nx train is \n", x_train)
-# print("\nx test is \n", x_test)
-# print("\ny train is \n", y_train)
-# print("\ny test is \n", y_test)
 
 # Fit the XGBoost model with the training data
 model = XGBClassifier()
@@ -46,10 +43,7 @@ print('\n y_pred \n',y_pred)
 y_pred_proba = model.predict_proba(x_test)
 y_pred_proba_class1 = [pred[1] for pred in y_pred_proba]
 
-# Print the predicted probabilities and actual values
-# print('\n y_pred_proba_class1 \n', y_pred_proba_class1)
-# for i in range(len(y_pred)):
-#     print(f"Data {i+1}: Predicted = {y_pred[i]}, Predicted Probability = {y_pred_proba_class1[i]:.2f}, Actual = {y_test[i]}")
+
 
 y_prediction = model.predict(x_test)
 
@@ -57,7 +51,7 @@ print("Accuracy Score is", accuracy_score(y_test, y_prediction) * 100)
 
 data = {'Data': [i+1 for i in range(len(y_pred))],
         'Predicted': y_pred,
-        'Predicted Probability': [f"{prob:.4f}" for prob in y_pred_proba_class1],
+        'Predicted Probability': [f"{prob*100:.4f}" for prob in y_pred_proba_class1],
         'Actual': y_test}
 
 df = pd.DataFrame(data)
