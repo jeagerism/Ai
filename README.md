@@ -10,6 +10,7 @@
 ```bash
 pip install fastapi uvicorn xgboost pandas sklearn
 
+
 ## ตัวอย่างข้อมูลที่ส่งไป api
 
  ```bash
