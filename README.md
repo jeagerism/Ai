@@ -7,9 +7,8 @@
 1. ดาวน์โหลดโปรเจกต์นี้
 2. ติดตั้งไลบรารีที่จำเป็นโดยใช้คำสั่ง:
 
-```bash
-pip install fastapi uvicorn xgboost pandas sklearn
-
+   ```bash
+   pip install fastapi uvicorn xgboost pandas sklearn
 
 3.ตัวอย่างข้อมูลที่ส่งไป api
 
