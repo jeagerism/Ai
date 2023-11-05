@@ -17,7 +17,8 @@
 4.URL API Method POST
 
    ```bash
-      http://127.0.0.1:8000/predict
+   http://127.0.0.1:8000/predict
+
 
 5.ตัวอย่าง ผลลัพธ์
    {
