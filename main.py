@@ -18,7 +18,7 @@ def read_root():
     return {"Hello": "World"}
 
 @app.post("/predict")
-async def predict(data: List[float]) -> Dict[str, float]:
+async def predict(data: List[float]) -> float:
     # Define the function to predict Parkinson
     def predict_parkinson(data):
         # Extract features and labels
@@ -44,7 +44,7 @@ async def predict(data: List[float]) -> Dict[str, float]:
         y_pred_proba = model.predict_proba(input_data_scaled)
         y_pred_proba_class1 = y_pred_proba[0][1]  # Probability of the positive class
 
-        return {"prediction": y_pred_proba_class1}
+        return y_pred_proba_class1.item()
 
     return predict_parkinson(data)
 
