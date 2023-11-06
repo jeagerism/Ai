@@ -9,7 +9,7 @@ from typing import List, Dict
 import uvicorn
 
 # Load the data from local path
-local_data = pd.read_csv(r'C:\Users\oo4dx\Downloads\parkinsons (1)\parkinsons.data')  # Adjust the file path accordingly
+local_data = pd.read_csv(r'C:\Users\oo4dx\Downloads\parkinsons (1)\telemonitoring\__pycache__\parkinsons.data')  # Adjust the file path accordingly
 
 app = FastAPI()
 
